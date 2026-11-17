@@ -106,7 +106,7 @@
                         <textarea id="editRoadmapDesc" rows="3" class="w-full bg-discord-darker border border-gray-700 rounded-xl px-4 py-2 text-white text-sm focus:outline-none focus:border-discord-accent"></textarea>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-gray-400 mb-1">Status (np. BRAK, W produkcji, Trwają testy):</label>
+                        <label class="block text-xs font-semibold uppercase text-gray-400 mb-1">Status (np. BRAK, TRWAJĄ TESTY):</label>
                         <input type="text" id="editRoadmapStatus" class="w-full bg-discord-darker border border-gray-700 rounded-xl px-4 py-2 text-white text-sm focus:outline-none focus:border-discord-accent">
                     </div>
                     <div>
@@ -563,7 +563,7 @@
         </div>
     </section>
 
-    <!-- SEKCJA: Roadmap / Plan rozwoju GiftCode -->
+    <!-- SEKCJA: Roadmap / Plan rozwoju GiftCode z obsługą edycji dla BACKUP -->
     <section id="roadmap" class="py-20 px-4 max-w-7xl mx-auto border-t border-gray-800 reveal-on-scroll">
         <div class="text-center mb-16">
             <h2 class="text-xs font-bold uppercase tracking-widest text-discord-accent mb-2">Plany i Rozwój</h2>
@@ -595,26 +595,26 @@
                 </div>
             </div>
 
-            <!-- Kafel 2: TXT (tt) -->
+            <!-- Kafel 2: BACKUP (hasło: tt) -->
             <div class="bg-discord-card p-6 rounded-2xl border border-yellow-500/40 relative overflow-hidden card-item flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-start mb-4">
                         <div class="w-10 h-10 bg-yellow-500/10 rounded-xl flex items-center justify-center text-yellow-400 text-lg font-bold">
-                            <i class="fa-solid fa-paintbrush"></i>
+                            <i class="fa-solid fa-database"></i>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <span id="roadmapStatus-txt" class="bg-yellow-500 text-black font-bold text-[10px] uppercase px-3 py-1 rounded-bl-xl">BRAK</span>
-                            <button onclick="openRoadmapEditModal('txt')" class="bg-discord-darker hover:bg-gray-700 text-gray-300 w-7 h-7 rounded-lg flex items-center justify-center border border-gray-700 text-xs transition" title="Edytuj (hasło: tt)">
+                            <span id="roadmapStatus-backup" class="bg-discord-accent text-white font-bold text-[10px] uppercase px-3 py-1 rounded-bl-xl">TRWAJĄ TESTY</span>
+                            <button onclick="openRoadmapEditModal('backup')" class="bg-discord-darker hover:bg-gray-700 text-gray-300 w-7 h-7 rounded-lg flex items-center justify-center border border-gray-700 text-xs transition" title="Edytuj (hasło: tt)">
                                 <i class="fa-solid fa-gear"></i>
                             </button>
                         </div>
                     </div>
-                    <h3 id="roadmapTitle-txt" class="text-lg font-bold text-white mb-2 card-title">TXT</h3>
-                    <p id="roadmapDesc-txt" class="text-gray-400 text-xs mb-4 card-desc">BRAK</p>
+                    <h3 id="roadmapTitle-backup" class="text-lg font-bold text-white mb-2 card-title">BACKUP</h3>
+                    <p id="roadmapDesc-backup" class="text-gray-400 text-xs mb-4 card-desc">Komenda /backup <nick> przywraca dla gracza eq po śmierci, komenda jest TYLKO dla administratora</p>
                 </div>
                 <div class="flex items-center justify-between text-xs text-gray-400 border-t border-gray-700/50 pt-3">
                     <span class="text-yellow-400 font-semibold">Szacowany start:</span>
-                    <span id="roadmapDate-txt" class="text-white font-medium">BRAK</span>
+                    <span id="roadmapDate-backup" class="text-white font-medium">20.11.2026</span>
                 </div>
             </div>
 
@@ -930,7 +930,7 @@
         const WEBHOOK_IDEAS = "https://discord.com/api/webhooks/1571253350941327480/dHiEC_RFQ2q0PC0MGpVtSbkJKNGoLFciDx4b1K2zaxLoeSexQF4lVGJRCno8iEMONl6L";
         const WEBHOOK_VOTES = "https://discord.com/api/webhooks/1571253350941327480/dHiEC_RFQ2q0PC0MGpVtSbkJKNGoLFciDx4b1K2zaxLoeSexQF4lVGJRCno8iEMONl6L";
 
-        // Dane Roadmapy z hasłami: skrypty (sy), txt (tt), spawn (sn)
+        // Zaktualizowane dane Roadmapy: skrypty (sy), backup (tt), spawn (sn)
         let roadmapData = {
             skrypty: {
                 pass: 'sy',
@@ -939,12 +939,12 @@
                 status: 'BRAK',
                 date: 'BRAK'
             },
-            txt: {
+            backup: {
                 pass: 'tt',
-                title: 'TXT',
-                desc: 'BRAK',
-                status: 'BRAK',
-                date: 'BRAK'
+                title: 'BACKUP',
+                desc: 'Komenda /backup <nick> przywraca dla gracza eq po śmierci, komenda jest TYLKO dla administratora',
+                status: 'TRWAJĄ TESTY',
+                date: '20.11.2026'
             },
             spawn: {
                 pass: 'sn',
@@ -1461,7 +1461,7 @@
                 cardDescs.forEach(el => el.classList.replace('text-gray-400', 'text-gray-600'));
                 labelTexts.forEach(el => el.classList.replace('text-gray-300', 'text-gray-700'));
                 cardBtns.forEach(el => {
-                    el.className = el.className.replace('bg-discord-dark border-gray-700 text-white hover:bg-gray-700', 'bg-gray-200 border-gray-300 text-gray-800 hover:bg-gray-300');
+                    el.className = el.className.replace('bg-gray-200 border-gray-300 text-gray-800 hover:bg-gray-300', 'bg-discord-dark border-gray-700 text-white hover:bg-gray-700');
                 });
                 showToast("Włączono jasny motyw strony!");
             } else {
